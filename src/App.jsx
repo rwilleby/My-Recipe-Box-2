@@ -71,26 +71,9 @@ const CATEGORY_ICON_IMAGES = {
 };
 
 const HOME_CATEGORY_CODES = [
-  "AM",
-  "AS",
-  "IT",
-  "MX",
-  "SF",
-  "QP",
-  "CS",
-  "SB",
-  "SG",
-  "SD",
-  "HB",
-  "SW",
-  "LF",
-  "PM",
-  "KR",
-  "CC",
-  "CO",
-  "CR",
-  "DN",
-  "JJ",
+  "AM", "AS", "IT",
+  "MX", "SF", "CS",
+  "SB", "SG", "SD",
 ];
 
 const HOME_CATEGORY_LABELS = {
@@ -1250,92 +1233,63 @@ const PageNavigationContext = createContext({
 });
 
 function Header({ activePage, setActivePage }) {
-  const navGroups = NAV_GROUPS;
-  function openPage(page) {
-    if (!page) return;
-    setActivePage(page);
-  }
-
-  function firstNavigablePage(group) {
-    return group.items.find((item) => item.page)?.page || "Home";
-  }
-
-  function groupIsActive(group) {
-    return group.items.some((item) => item.page && activePage === item.page);
-  }
+  const simpleNav = [
+    { label: "ABOUT", page: "About" },
+    { label: "RECIPES", page: "Recipes" },
+    { label: "MEAL PLANNING", page: "Meal Planner" },
+    { label: "RESOURCES", page: "Reference Guides" },
+  ];
 
   return (
-    <header className="topbar">
+    <header className="topbar simpleTopbar">
       <button
-        className="brand brandLogoButton"
+        className="brand brandLogoButton simplifiedBrand"
         onClick={() => setActivePage("Home")}
-        aria-label="Go home"
+        aria-label="Go to the Robert's Recipe Box homepage"
       >
         <img
           className="brandLogoImage"
           src={`${import.meta.env.BASE_URL}images/ui/rrb-logo-wide.png`}
           alt="Robert's Recipe Box"
         />
+        <span className="simplifiedBrandTagline">RECIPES • MEAL PLANNING • GROCERY LISTS</span>
       </button>
 
-      <nav className="navLinks dropdownNav" aria-label="Main navigation">
-        {navGroups.map((group) => (
-          <div
-            className={groupIsActive(group) ? "navDropdown active" : "navDropdown"}
-            key={group.label}
+      <nav className="simpleNav" aria-label="Main navigation">
+        {simpleNav.map((item) => (
+          <button
+            key={item.label}
+            type="button"
+            className={activePage === item.page ? "active" : ""}
+            onClick={() => setActivePage(item.page)}
           >
-            <button
-              className="navDropdownButton"
-              type="button"
-              onClick={() => openPage(firstNavigablePage(group))}
-              aria-haspopup="true"
-            >
-              {group.label}
-              <span aria-hidden="true">⌄</span>
-            </button>
-
-            <div className="navDropdownMenu">
-              {group.items.map((item, index) => {
-                const itemClasses = [
-                  "navDropdownItem",
-                  item.level ? `navDropdownLevel${item.level}` : "navDropdownLevel0",
-                  activePage === item.page ? "active" : "",
-                  item.labelOnly ? "navDropdownLabel" : "",
-                ]
-                  .filter(Boolean)
-                  .join(" ");
-
-                if (item.labelOnly) {
-                  return (
-                    <div
-                      key={`${group.label}-${item.label}-${index}`}
-                      className={itemClasses}
-                    >
-                      {item.label}
-                    </div>
-                  );
-                }
-
-                return (
-                  <button
-                    key={`${group.label}-${item.label}-${index}`}
-                    className={itemClasses}
-                    type="button"
-                    onClick={() => openPage(item.page)}
-                  >
-                    {item.label}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+            {item.label}
+          </button>
         ))}
+        <span className="simpleNavDivider" aria-hidden="true">|</span>
+        <button
+          type="button"
+          className="simpleIconButton"
+          onClick={() => setActivePage("Favorites")}
+          aria-label="View favorite recipes"
+          title="Favorites"
+        >
+          ♡
+        </button>
+        <span className="simpleNavDivider" aria-hidden="true">|</span>
+        <button
+          type="button"
+          className="simpleIconButton"
+          onClick={() => setActivePage("Recipes")}
+          aria-label="Search recipes"
+          title="Search recipes"
+        >
+          ⌕
+        </button>
       </nav>
-
     </header>
   );
 }
-
 
 
 function getHeroInfoTargetPage(title) {
@@ -1427,12 +1381,11 @@ function Hero({ setActivePage }) {
     const timer = window.setInterval(() => {
       setHeroIndex((current) => (current + 1) % HERO_IMAGES.length);
     }, 6000);
-
     return () => window.clearInterval(timer);
   }, []);
 
   return (
-    <section className="hero">
+    <section className="hero simplifiedHero">
       <div className="heroRotator" aria-hidden="true">
         {HERO_IMAGES.map((imagePath, index) => (
           <img
@@ -1448,35 +1401,22 @@ function Hero({ setActivePage }) {
         ))}
       </div>
 
-      <div className="heroOverlay" aria-hidden="true" />
+      <div className="heroOverlay simplifiedHeroOverlay" aria-hidden="true" />
 
-      <div className="heroCopy">
-        <div className="aiBadge">✧ AI-POWERED RECIPE PLANNING ✧</div>
-
+      <div className="heroCopy simplifiedHeroCopy">
         <h1>Plan. Cook. Eat. Freeze. Save.</h1>
+        <p>Practical recipes and meal-planning tools for couples, seniors, and smaller households.</p>
+        <strong className="heroPromise">Shop smarter. Save more.</strong>
 
-        <p>Welcome to my free recipe-card and meal-planning site. I use it every week for my own meal planning, and I designed it especially for seniors, couples, empty nesters, and smaller households who want practical meals, useful leftovers, freezer-friendly ideas, and organized grocery lists. <strong>Shop smarter. Save more.</strong></p>
-
-        <div className="heroButtons">
+        <div className="heroButtons simplifiedHeroButtons">
           <button className="primary" onClick={() => setActivePage("Recipes")}>
-            ▣ Browse Our Recipe Library
+            ▣ Browse Recipes
           </button>
-          <button
-            className="secondary"
-            onClick={() => setActivePage("Meal Planner")}
-          >
-            ▣ Start Meal Planning
-          </button>
-          <button
-            className="secondary freezerHeroButton"
-            onClick={() => setActivePage("Freezer Tips")}
-          >
-            ▣ Freezer Tips
+          <button className="secondary" onClick={() => setActivePage("Meal Planner")}>
+            □ Plan My Week
           </button>
         </div>
       </div>
-      <HeroInfoButtons setActivePage={setActivePage} />
-
     </section>
   );
 }
@@ -3246,39 +3186,94 @@ function Home({
   setFilter,
   classifiedRecipes,
 }) {
+  const popularRecipes = useMemo(
+    () => getRandomRecipes(dinnerCombinations, 3),
+    []
+  );
+
+  const featureCards = [
+    {
+      title: "Browse Recipes",
+      icon: "▣",
+      text: "Find recipes by category, ingredient, or occasion.",
+      link: "Explore Recipes →",
+      page: "Recipes",
+    },
+    {
+      title: "Weekly Planner",
+      icon: "□",
+      text: "Plan your meals for the week and stay organized.",
+      link: "Plan My Week →",
+      page: "Meal Planner",
+    },
+    {
+      title: "Grocery List",
+      icon: "🛒",
+      text: "Create and manage your grocery lists with ease.",
+      link: "View My List →",
+      page: "Shopping Lists",
+    },
+  ];
+
   return (
     <>
       <Hero setActivePage={setActivePage} />
-      <TransparencyLine setActivePage={setActivePage} />
-      <CategoryGrid setFilter={setFilter} setActivePage={setActivePage} />
 
-      <section className="section homeRolodexShowcaseSection">
-        <div className="homeRolodexShowcaseLayout homeThreeColumnShowcase">
-          <div className="homeDinnerRecommendationsColumn">
-            <FeaturedSelectionPanel setActivePage={setActivePage} />
+      <main className="simplifiedHome">
+        <section className="simpleCategoryColumn" aria-label="Recipe categories">
+          <CategoryGrid setFilter={setFilter} setActivePage={setActivePage} />
+        </section>
+
+        <section className="simpleHomeContent">
+          <div className="simpleSectionHeading">
+            <div>
+              <span>POPULAR RECIPES</span>
+              <h2>Dinner combinations</h2>
+            </div>
+            <button type="button" onClick={() => setActivePage("Dinner Combinations")}>
+              View all recipes →
+            </button>
           </div>
 
-          <div className="homeShowcaseRolodexColumn">
-            <RecipeRolodex setActivePage={setActivePage} setFilter={setFilter} />
+          <div className="popularRecipeGrid">
+            {popularRecipes.map((meal, index) => (
+              <article className="popularRecipeCard" key={meal.id || index}>
+                <button
+                  type="button"
+                  className="popularRecipeImageButton"
+                  onClick={() => setActivePage("Dinner Combinations")}
+                >
+                  <DinnerCombinationImage
+                    meal={meal}
+                    className="popularRecipeImage"
+                    loading="lazy"
+                  />
+                </button>
+                <div className="popularRecipeBody">
+                  <h3>{meal.title}</h3>
+                  <div className="popularRecipeRating" aria-label={`${4.8 - index * 0.1} out of 5 stars`}>
+                    <span>★★★★★</span>
+                    <small>{(4.8 - index * 0.1).toFixed(1)} ({42 - index * 7})</small>
+                  </div>
+                </div>
+              </article>
+            ))}
           </div>
 
-          <div className="homeProductsColumn">
-            <ProductsIUseCarousel setActivePage={setActivePage} />
+          <div className="simpleFeatureGrid">
+            {featureCards.map((feature) => (
+              <article className="simpleFeatureCard" key={feature.title}>
+                <span className="simpleFeatureIcon" aria-hidden="true">{feature.icon}</span>
+                <h3>{feature.title}</h3>
+                <p>{feature.text}</p>
+                <button type="button" onClick={() => setActivePage(feature.page)}>
+                  {feature.link}
+                </button>
+              </article>
+            ))}
           </div>
-        </div>
-      </section>
-
-      <HomeRecipeCounters classifiedRecipes={classifiedRecipes} />
-
-      <div className="homeAdminAccessWrap" aria-label="Administrative tools">
-        <button
-          className="adminAccessButton homeAdminAccessButton"
-          type="button"
-          onClick={() => setActivePage("Admin Recipes")}
-        >
-          Admin
-        </button>
-      </div>
+        </section>
+      </main>
     </>
   );
 }
@@ -10645,8 +10640,10 @@ Use this section to check what is on hand, record dates, mark foods that should 
         toggleFavorite={toggleFavorite}
       />
 
-      <footer className="footer">
-        Robert’s Recipe Box uses AI-generated recipes and organization as a practical planning tool. Favorites and meal plans are saved in this browser only and are not shared between your devices. Some product links may earn a small commission at no extra cost to you, however, you are not required to purchase anything to use my site.
+      <footer className="footer simplifiedFooter">
+        <strong>Honesty:</strong> I use AI assistance to generate recipes. I’m not a chef, and I do not copy recipes from others; I describe what I want and use AI to help create the recipes.{" "}
+        <button type="button" onClick={() => setActivePage("Disclaimers")}>Read my disclaimers.</button>
+        <span> Favorites and meal plans are saved only in this browser. Some product links may earn a small commission at no extra cost to you.</span>
       </footer>
       </div>
     </PageNavigationContext.Provider>

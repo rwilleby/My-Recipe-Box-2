@@ -23962,3 +23962,414 @@ body.rrbPopupOpen {
     margin-top: 12px !important;
   }
 }
+
+
+/* ================================================================
+   BASE2 SIMPLIFIED HOMEPAGE REDESIGN
+   ================================================================ */
+
+.simpleTopbar {
+  min-height: 86px;
+  height: auto;
+  padding: 10px clamp(24px, 5vw, 72px);
+  gap: clamp(24px, 4vw, 68px);
+  background: #ffffff;
+}
+
+.simplifiedBrand {
+  width: clamp(280px, 27vw, 390px);
+  min-width: 280px;
+  height: 66px;
+  overflow: visible;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.simplifiedBrand .brandLogoImage {
+  width: 100%;
+  max-width: 390px;
+  max-height: 48px;
+  object-fit: contain;
+  object-position: left center;
+  transform: none;
+}
+
+.simplifiedBrandTagline {
+  display: block;
+  margin: 2px 0 0 clamp(74px, 6vw, 94px);
+  color: var(--green);
+  font-size: clamp(9px, .75vw, 11px);
+  font-weight: 700;
+  letter-spacing: .065em;
+  white-space: nowrap;
+}
+
+.simpleNav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(12px, 1.8vw, 28px);
+}
+
+.simpleNav button {
+  min-height: 42px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #111827;
+  font-size: clamp(12px, 1vw, 15px);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.simpleNav button:hover,
+.simpleNav button.active {
+  color: var(--green);
+}
+
+.simpleNavDivider {
+  color: #a8aaa6;
+}
+
+.simpleIconButton {
+  width: 32px;
+  font-size: 25px !important;
+  font-weight: 400 !important;
+}
+
+.simplifiedHero {
+  min-height: 310px;
+  padding: 46px clamp(24px, 5vw, 72px) 38px;
+}
+
+.simplifiedHeroOverlay {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,.99) 0%,
+    rgba(255,255,255,.96) 31%,
+    rgba(255,255,255,.76) 48%,
+    rgba(255,255,255,.20) 68%,
+    rgba(255,255,255,.03) 100%
+  );
+}
+
+.simplifiedHeroCopy {
+  position: relative;
+  z-index: 3;
+  max-width: 590px;
+}
+
+.simplifiedHero .simplifiedHeroCopy h1 {
+  margin: 0 0 14px;
+  max-width: 590px;
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  font-size: clamp(38px, 4vw, 58px);
+  line-height: 1.02;
+  letter-spacing: -.035em;
+}
+
+.simplifiedHeroCopy p {
+  max-width: 540px;
+  color: #273244;
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.48;
+}
+
+.heroPromise {
+  display: block;
+  margin-top: 10px;
+  color: #111827;
+  font-size: 17px;
+}
+
+.hero .simplifiedHeroButtons {
+  position: static;
+  display: flex !important;
+  margin-top: 24px;
+  gap: 12px;
+  max-width: none;
+}
+
+.simplifiedHeroButtons .primary,
+.simplifiedHeroButtons .secondary {
+  min-height: 46px;
+  padding: 0 20px;
+}
+
+.simplifiedHome {
+  width: min(1440px, 100%);
+  margin: 0 auto;
+  padding: 34px clamp(24px, 5vw, 72px) 54px;
+  display: grid;
+  grid-template-columns: minmax(280px, 31%) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 58px);
+  align-items: start;
+}
+
+.simpleCategoryColumn .homeCategorySection {
+  padding: 0;
+  background: transparent;
+}
+
+.simpleCategoryColumn .homeCategoryGrid {
+  --category-tile-size: clamp(72px, 6.3vw, 100px);
+  --category-name-size: 13px;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 24px 14px !important;
+}
+
+.simpleCategoryColumn .homeCategoryTile,
+.simpleCategoryColumn .secondRowCategoryTile {
+  min-height: 128px;
+}
+
+.simpleCategoryColumn .homeCategoryGrid .categoryIconImage,
+.simpleCategoryColumn .homeCategoryGrid .categoryIconFallback,
+.simpleCategoryColumn .homeCategoryGrid .secondRowCategoryTile .categoryIconImage,
+.simpleCategoryColumn .homeCategoryGrid .secondRowCategoryTile .categoryIconFallback {
+  width: var(--category-tile-size) !important;
+  height: var(--category-tile-size) !important;
+  max-width: var(--category-tile-size) !important;
+  margin-bottom: 8px !important;
+}
+
+.simpleCategoryColumn .homeCategoryGrid .categoryTile strong,
+.simpleCategoryColumn .homeCategoryGrid .secondRowCategoryTile strong {
+  max-width: 112px !important;
+  font-size: var(--category-name-size) !important;
+}
+
+.simpleHomeContent {
+  min-width: 0;
+}
+
+.simpleSectionHeading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+.simpleSectionHeading span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .09em;
+}
+
+.simpleSectionHeading h2 {
+  margin: 0;
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  font-size: 25px;
+}
+
+.simpleSectionHeading button,
+.simpleFeatureCard button,
+.simplifiedFooter button {
+  border: 0;
+  background: transparent;
+  color: var(--green);
+  font-weight: 700;
+}
+
+.popularRecipeGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.popularRecipeCard {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.popularRecipeImageButton {
+  width: 100%;
+  height: 150px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: #f4f1eb;
+}
+
+.popularRecipeImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.popularRecipeBody {
+  padding: 12px;
+}
+
+.popularRecipeBody h3 {
+  margin: 0 0 9px;
+  min-height: 36px;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.popularRecipeRating {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.popularRecipeRating span {
+  color: #d59b15;
+  letter-spacing: .03em;
+}
+
+.popularRecipeRating small {
+  color: var(--muted);
+}
+
+.simpleFeatureGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.simpleFeatureCard {
+  min-height: 190px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.simpleFeatureIcon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #edf7ef;
+  color: var(--green);
+  font-size: 20px;
+}
+
+.simpleFeatureCard h3 {
+  margin: 15px 0 7px;
+  font-size: 17px;
+}
+
+.simpleFeatureCard p {
+  margin: 0 0 15px;
+  color: #4b5563;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.simpleFeatureCard button {
+  margin-top: auto;
+  padding: 0;
+}
+
+.simplifiedFooter {
+  padding: 24px clamp(24px, 5vw, 72px);
+  line-height: 1.55;
+}
+
+.simplifiedFooter button {
+  padding: 0;
+  text-decoration: underline;
+}
+
+@media (max-width: 1050px) {
+  .simpleTopbar {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .simpleNav {
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+
+  .simplifiedHome {
+    grid-template-columns: 1fr;
+  }
+
+  .simpleCategoryColumn .homeCategoryGrid {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .simplifiedBrand {
+    width: min(100%, 330px);
+  }
+
+  .simpleNav {
+    gap: 16px;
+  }
+
+  .simpleNavDivider {
+    display: none;
+  }
+
+  .simplifiedHero {
+    min-height: auto;
+    padding: 34px 24px;
+  }
+
+  .simplifiedHeroOverlay {
+    background: rgba(255,255,255,.92);
+  }
+
+  .hero .simplifiedHeroButtons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .simplifiedHome {
+    padding: 28px 20px 42px;
+  }
+
+  .simpleCategoryColumn .homeCategoryGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .popularRecipeGrid,
+  .simpleFeatureGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .popularRecipeImageButton {
+    height: 210px;
+  }
+
+  .simpleSectionHeading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 460px) {
+  .simpleCategoryColumn .homeCategoryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .simplifiedBrandTagline {
+    margin-left: 52px;
+    font-size: 8px;
+  }
+}
