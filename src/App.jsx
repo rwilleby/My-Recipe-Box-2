@@ -1241,21 +1241,26 @@ function Header({ activePage, setActivePage }) {
   ];
 
   return (
-    <header className="topbar simpleTopbar">
+    <header className="topbar approvedHeader">
       <button
-        className="brand brandLogoButton simplifiedBrand"
+        className="approvedBrand"
+        type="button"
         onClick={() => setActivePage("Home")}
         aria-label="Go to the Robert's Recipe Box homepage"
       >
         <img
-          className="brandLogoImage"
-          src={`${import.meta.env.BASE_URL}images/ui/rrb-logo-wide.png`}
-          alt="Robert's Recipe Box"
+          className="approvedLogoMark"
+          src={`${import.meta.env.BASE_URL}images/ui/rrb-logo-mark-approved.png`}
+          alt=""
+          aria-hidden="true"
         />
-        <span className="simplifiedBrandTagline">RECIPES • MEAL PLANNING • GROCERY LISTS</span>
+        <span className="approvedBrandCopy">
+          <strong>Robert's Recipe Box</strong>
+          <small>RECIPES • MEAL PLANNING • GROCERY LISTS</small>
+        </span>
       </button>
 
-      <nav className="simpleNav" aria-label="Main navigation">
+      <nav className="approvedNav" aria-label="Main navigation">
         {simpleNav.map((item) => (
           <button
             key={item.label}
@@ -1266,20 +1271,20 @@ function Header({ activePage, setActivePage }) {
             {item.label}
           </button>
         ))}
-        <span className="simpleNavDivider" aria-hidden="true">|</span>
+
         <button
           type="button"
-          className="simpleIconButton"
+          className="approvedNavIcon"
           onClick={() => setActivePage("Favorites")}
           aria-label="View favorite recipes"
           title="Favorites"
         >
           ♡
         </button>
-        <span className="simpleNavDivider" aria-hidden="true">|</span>
+
         <button
           type="button"
-          className="simpleIconButton"
+          className="approvedNavIcon approvedSearchIcon"
           onClick={() => setActivePage("Recipes")}
           aria-label="Search recipes"
           title="Search recipes"

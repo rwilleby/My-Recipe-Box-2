@@ -24373,3 +24373,214 @@ body.rrbPopupOpen {
     font-size: 8px;
   }
 }
+
+
+/* ================================================================
+   APPROVED HEADER MASTER — JULY 21, 2026
+   ================================================================ */
+
+.approvedHeader {
+  min-height: 166px;
+  height: auto;
+  display: grid;
+  grid-template-columns: minmax(520px, auto) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(30px, 4vw, 76px);
+  padding: 12px clamp(28px, 5vw, 84px) 8px;
+  border-bottom: 1px solid var(--line);
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.approvedBrand {
+  min-width: 0;
+  height: 144px;
+  display: grid;
+  grid-template-columns: 225px minmax(280px, auto);
+  align-items: center;
+  gap: 14px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--green);
+  text-align: left;
+}
+
+.approvedLogoMark {
+  display: block;
+  width: 225px;
+  height: 142px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.approvedBrandCopy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.approvedBrandCopy strong {
+  display: block;
+  color: #123f25;
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  font-size: clamp(34px, 3.2vw, 51px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.approvedBrandCopy small {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #cdbd8e;
+  color: #123f25;
+  font-size: clamp(10px, .82vw, 13px);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: .035em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.approvedNav {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(20px, 2.25vw, 40px);
+  margin-top: 48px;
+}
+
+.approvedNav button {
+  min-height: 42px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #111827;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  font-size: clamp(12px, .92vw, 15px);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.approvedNav button:hover,
+.approvedNav button.active {
+  color: var(--green);
+}
+
+.approvedNavIcon {
+  width: 34px;
+  font-size: 31px !important;
+  line-height: 1;
+  font-weight: 400 !important;
+}
+
+.approvedSearchIcon {
+  font-size: 29px !important;
+}
+
+@media (max-width: 1180px) {
+  .approvedHeader {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-top: 8px;
+    padding-bottom: 12px;
+  }
+
+  .approvedBrand {
+    grid-template-columns: 185px minmax(260px, 1fr);
+    width: min(760px, 100%);
+    height: 122px;
+  }
+
+  .approvedLogoMark {
+    width: 185px;
+    height: 120px;
+  }
+
+  .approvedBrandCopy {
+    align-items: flex-start;
+  }
+
+  .approvedBrandCopy small {
+    text-align: center;
+  }
+
+  .approvedNav {
+    width: 100%;
+    margin-top: 0;
+    padding-top: 2px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+}
+
+@media (max-width: 700px) {
+  .approvedHeader {
+    position: relative;
+    padding: 8px 18px 12px;
+  }
+
+  .approvedBrand {
+    grid-template-columns: 112px minmax(0, 1fr);
+    height: 94px;
+    gap: 8px;
+  }
+
+  .approvedLogoMark {
+    width: 112px;
+    height: 92px;
+  }
+
+  .approvedBrandCopy strong {
+    font-size: clamp(24px, 7.4vw, 34px);
+  }
+
+  .approvedBrandCopy small {
+    margin-top: 8px;
+    padding-bottom: 6px;
+    font-size: clamp(7px, 2.25vw, 10px);
+    letter-spacing: .015em;
+  }
+
+  .approvedNav {
+    gap: 18px;
+  }
+
+  .approvedNav button {
+    font-size: 12px;
+  }
+
+  .approvedNavIcon {
+    min-width: 28px;
+  }
+}
+
+@media (max-width: 440px) {
+  .approvedBrand {
+    grid-template-columns: 88px minmax(0, 1fr);
+    height: 82px;
+  }
+
+  .approvedLogoMark {
+    width: 88px;
+    height: 78px;
+  }
+
+  .approvedBrandCopy strong {
+    font-size: 22px;
+  }
+
+  .approvedBrandCopy small {
+    font-size: 6.7px;
+  }
+}
