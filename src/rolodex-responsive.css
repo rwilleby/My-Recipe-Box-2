@@ -1,0 +1,164 @@
+/* ================================================================
+   ROBERT'S RECIPE BOX — RESPONSIVE ROLODEX LOCK
+
+   Import this file AFTER App.css.
+
+   Purpose:
+   - The Rolodex holder image establishes the visual stage height.
+   - The live recipe card is sized and positioned with percentages.
+   - When the holder image grows or shrinks, the recipe card follows it.
+   - Removes the old fixed max-height rules that caused card/image drift.
+   ================================================================ */
+
+/*
+  These four variables are the only values normally adjusted.
+  They are percentages of the Rolodex holder/stage, not fixed pixels.
+*/
+.homeRolodexStage {
+  --rolodex-art-width: 108%;
+  --rolodex-card-width: 39.5%;
+  --rolodex-card-center-x: 50%;
+  --rolodex-card-center-y: 47.5%;
+  --rolodex-arrow-center-y: 50%;
+
+  position: relative;
+  isolation: isolate;
+  display: block;
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #f4f1eb;
+}
+
+/*
+  IMPORTANT: The holder image remains in normal document flow.
+  Its natural aspect ratio now controls the stage height.
+*/
+.homeRolodexHolderArt {
+  position: relative;
+  inset: auto;
+  z-index: 1;
+  display: block;
+  width: var(--rolodex-art-width);
+  max-width: none;
+  height: auto;
+  margin: 0;
+  margin-left: calc((100% - var(--rolodex-art-width)) / 2);
+  transform: none;
+  pointer-events: none;
+  user-select: none;
+}
+
+/*
+  The live card is overlaid on the holder with percentage measurements.
+  Recipe cards are 6 x 4 landscape, so height follows width automatically.
+*/
+.homeRolodexCard {
+  position: absolute;
+  left: var(--rolodex-card-center-x);
+  top: var(--rolodex-card-center-y);
+  z-index: 3;
+  display: block;
+  width: var(--rolodex-card-width);
+  height: auto;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  transform: translate(-50%, -50%);
+}
+
+.homeRolodexCard img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  max-height: none;
+  margin: 0;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+}
+
+/* Keep the previous/next controls attached to the same responsive stage. */
+.homeRolodexNav {
+  position: absolute;
+  top: var(--rolodex-arrow-center-y);
+  z-index: 4;
+  width: clamp(34px, 5.2%, 48px);
+  height: clamp(56px, 19%, 78px);
+  margin: 0;
+  transform: translateY(-50%);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--green);
+  font-size: clamp(32px, 5vw, 44px);
+  line-height: 1;
+  display: grid;
+  place-items: center;
+}
+
+.homeRolodexStage > .homeRolodexNav:first-of-type {
+  left: clamp(7px, 2%, 18px);
+}
+
+.homeRolodexStage > .homeRolodexNav:last-of-type {
+  right: clamp(7px, 2%, 18px);
+}
+
+/* Prevent older desktop/tablet/mobile rules from reintroducing fixed sizing. */
+@media (max-width: 1100px) {
+  .homeRolodexStage {
+    min-height: 0;
+    height: auto;
+    padding: 0;
+  }
+
+  .homeRolodexHolderArt {
+    width: var(--rolodex-art-width);
+    margin-left: calc((100% - var(--rolodex-art-width)) / 2);
+    transform: none;
+  }
+
+  .homeRolodexCard {
+    width: var(--rolodex-card-width);
+    transform: translate(-50%, -50%);
+  }
+
+  .homeRolodexCard img {
+    width: 100%;
+    max-height: none;
+  }
+
+  .homeRolodexNav {
+    transform: translateY(-50%);
+  }
+}
+
+@media (max-width: 720px) {
+  .homeRolodexStage {
+    /* Same proportions on phones; only the controls become slightly smaller. */
+    --rolodex-art-width: 112%;
+    --rolodex-card-width: 39.5%;
+  }
+
+  .homeRolodexNav {
+    width: clamp(30px, 7.5%, 38px);
+    height: clamp(48px, 19%, 62px);
+    border-radius: 10px;
+    font-size: clamp(28px, 9vw, 36px);
+  }
+}
+
+/* The dots remain below the stage and do not affect holder/card alignment. */
+.homeRolodexDots {
+  position: relative;
+  z-index: 5;
+  flex: 0 0 auto;
+}
