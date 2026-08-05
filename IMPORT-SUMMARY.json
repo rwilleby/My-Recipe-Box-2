@@ -1,0 +1,16 @@
+{
+  "sourceWorkbook": "RRB_Food_Intelligence_Database_Master_Consolidated_Audit_v3_Retailer_Priority.xlsx",
+  "recipeRecords": 489,
+  "nutritionProfiles": 762,
+  "estimatedUsable": 485,
+  "notReady": 4,
+  "notReadyCodes": [
+    "AS-003",
+    "AS-004",
+    "AS-005",
+    "AS-009"
+  ],
+  "retiredExcluded": [
+    "AM-063"
+  ]
+}

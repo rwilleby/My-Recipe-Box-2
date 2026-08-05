@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:rfis": "node test/completeDinnerEngine.test.mjs && node test/rfisPlatform.test.mjs && node test/rfisUiServiceContracts.test.mjs && npm run test:rfis:architecture",
+    "check": "npm run test:rfis && npm run build",
+    "test:rfis:architecture": "node test/rfisArchitectureContracts.test.mjs"
   },
   "dependencies": {
     "react": "^19.1.0",
